@@ -16,6 +16,7 @@
   var rate="";
   var tBilled="";
   $("#add-employee").on("click",function(){
+    event.preventDefault();
     console.log("hell yeah")
     name=$("#employee-name").val().trim();
     role=$("#employee-role").val().trim();
@@ -40,3 +41,9 @@
   function calcTime(date){
     return 5;
   }
+  dataRef.ref().on("child_added",function(childSnapshot){
+    //add childSnapshot to table
+  })
+  dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added",function(){
+    //
+  })
