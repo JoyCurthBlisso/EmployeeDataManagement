@@ -35,15 +35,20 @@
     });
 
   })
-  function getEmployees(){
-
-  }
   function calcTime(date){
     return 5;
   }
-  dataRef.ref().on("child_added",function(childSnapshot){
+  database.ref().on("child_added",function(childSnapshot){
     //add childSnapshot to table
-  })
-  dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added",function(){
-    //
+    var newEmployee=childSnapshot.val();
+    console.log(newEmployee);
+    var table = $("#employees");
+    var newRow = $("<tr>")
+    var neName = $("<td>").text(newEmployee.name);
+    var nrole = $("<td>").text(newEmployee.role);
+    var nsDate = $("<td>").text(newEmployee.sDate);
+    var nmonthsWorked = $("<td>").text(newEmployee.monthsWorked);
+    var nrate = $("<td>").text(newEmployee.rate);
+    var ntBilled = $("<td>").text(newEmployee.tBilled);
+    table.append(newRow).append(neName).append(nrole).append(nsDate).append(nmonthsWorked).append(nrate).append(ntBilled)
   })
