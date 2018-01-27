@@ -20,11 +20,23 @@
     name=$("#employee-name").val().trim();
     role=$("#employee-role").val().trim();
     sDate=$("#employee-start-date").val().trim();
-    monthsWorked=5;
+    monthsWorked=calcTime(sDate);
     rate=$("#employee-monthly-rate").val().trim();
     tBilled=rate*monthsWorked;
-    database.ref().push();
+    database.ref().push({
+      name: name,
+      role: role,
+      sDate: sDate,
+      monthsWorked: monthsWorked,
+      rate: rate,
+      tBilled: tBilled,
+      dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
+
   })
   function getEmployees(){
 
+  }
+  function calcTime(date){
+    return 5;
   }
