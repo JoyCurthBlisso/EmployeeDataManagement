@@ -50,5 +50,5 @@
     var nmonthsWorked = $("<td>").text(newEmployee.monthsWorked);
     var nrate = $("<td>").text(newEmployee.rate);
     var ntBilled = $("<td>").text(newEmployee.tBilled);
-    table.append(newRow).append(neName).append(nrole).append(nsDate).append(nmonthsWorked).append(nrate).append(ntBilled)
+    table.append(newRow).append(neName).append(nrole).append(nsDate).append(nmonthsWorked).append(nrate).append(ntBilled);
   })
