@@ -21,23 +21,19 @@
     name=$("#employee-name").val().trim();
     role=$("#employee-role").val().trim();
     sDate=$("#employee-start-date").val().trim();
-    monthsWorked=calcTime(sDate);
     rate=$("#employee-monthly-rate").val().trim();
-    tBilled=rate*monthsWorked;
     database.ref().push({
       name: name,
       role: role,
       sDate: sDate,
-      monthsWorked: monthsWorked,
       rate: rate,
-      tBilled: tBilled,
       dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 
   })
   function calcTime(date){
-    return 5;
-  }
+    return moment().diff(new Date(date), 'months');
+};
   database.ref().on("child_added",function(childSnapshot){
     //add childSnapshot to table
     var newEmployee=childSnapshot.val();
@@ -47,8 +43,8 @@
     var neName = $("<td>").text(newEmployee.name);
     var nrole = $("<td>").text(newEmployee.role);
     var nsDate = $("<td>").text(newEmployee.sDate);
-    var nmonthsWorked = $("<td>").text(newEmployee.monthsWorked);
+    var nmonthsWorked = $("<td>").text(calcTime(newEmployee.sDate));
     var nrate = $("<td>").text(newEmployee.rate);
-    var ntBilled = $("<td>").text(newEmployee.tBilled);
+    var ntBilled = $("<td>").text(calcTime(newEmployee.sDate)*newEmployee.rate);
     table.append(newRow).append(neName).append(nrole).append(nsDate).append(nmonthsWorked).append(nrate).append(ntBilled);
   })
