@@ -8,3 +8,23 @@
     messagingSenderId: "363408932150"
   };
   firebase.initializeApp(config);
+  var database =firebase.database();
+  var name="";
+  var role="";
+  var sData="";
+  var monthsWorked="";
+  var rate="";
+  var tBilled="";
+  $("#add-employee").on("click",function(){
+    console.log("hell yeah")
+    name=$("#employee-name").val().trim();
+    role=$("#employee-role").val().trim();
+    sDate=$("#employee-start-date").val().trim();
+    monthsWorked=5;
+    rate=$("#employee-monthly-rate").val().trim();
+    tBilled=rate*monthsWorked;
+    database.ref().push();
+  })
+  function getEmployees(){
+
+  }
